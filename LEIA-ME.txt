@@ -1,0 +1,14 @@
+EXPRESSÃO ARTES — como mexer no site
+
+Abrir: dê dois cliques em index.html (funciona direto no navegador).
+
+Onde mudar cada coisa
+  Número do WhatsApp ......... js/config.js   (CONFIG.whatsapp)
+  Produtos (nome/tipo/foto) .. js/produtos.js
+  Cores do site .............. css/style.css (bloco "1. VARIÁVEIS")
+  Textos das seções .......... index.html
+  Logo ....................... assets/logo.png (troque mantendo o nome)
+  Fotos dos produtos ......... salvar em assets/produtos/ e preencher "foto" em produtos.js
+
+Publicar: suba a pasta inteira no Cloudflare Pages ou Netlify
+(sem build; o diretório de saída é a própria raiz).

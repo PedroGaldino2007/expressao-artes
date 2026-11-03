@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Camisetas lisas, estampadas e personalizadas. Veja o catálogo e peça seu orçamento pelo WhatsApp.">
+  <title>Expressão Artes — Camisetas lisas, estampadas e personalizadas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="icon" href="assets/favicon.png">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Ícone do WhatsApp: definido uma vez e reutilizado com <use href="#icone-whatsapp"> -->
+  <svg style="display:none" aria-hidden="true">
+    <symbol id="icone-whatsapp" viewBox="0 0 24 24">
+      <path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.2 13.9c-.2.6-1.2 1.2-1.7 1.2-.5.1-1 .2-3.2-.7-2.7-1.1-4.4-3.9-4.5-4.1-.1-.2-1.1-1.4-1.1-2.7s.7-1.9.9-2.2c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6-.3.4c-.1.1-.3.3-.1.6.2.3.7 1.2 1.5 1.9 1 .9 1.9 1.2 2.2 1.3.3.1.4.1.6-.1l.8-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.8-.1 1.4Z"/>
+    </symbol>
+  </svg>
+
+  <!-- ============ CABEÇALHO ============ -->
+  <header class="cabecalho">
+    <div class="container">
+      <a class="logo" href="#topo" aria-label="Expressão Artes — início">
+        <img src="assets/logo.png" alt="Logomarca Expressão Artes">
+      </a>
+      <!-- Todo link com a classe "wa" vira link de WhatsApp (veja js/main.js).
+          O texto da mensagem fica no atributo data-msg. -->
+      <a class="botao botao-pequeno wa" href="#" data-msg="Olá! Vim pelo site da Expressão Artes e gostaria de um orçamento.">
+        <svg class="icone"><use href="#icone-whatsapp"/></svg>
+        <span class="texto-botao">Falar no WhatsApp</span>
+      </a>
+    </div>
+  </header>
+
+  <main id="topo">
+
+    <!-- ============ DESTAQUE (HERO) ============ -->
+    <section class="hero">
+      <div class="container hero-grade">
+        <div>
+          <h1>Camisetas lisas, estampadas e personalizadas</h1>
+          <p>Escolha um modelo pronto ou conte sua ideia: transformamos logos, fotos e desenhos em camisetas, para uma peça ou para a turma toda.</p>
+          <div class="hero-botoes">
+            <a class="botao wa" href="#" data-msg="Olá! Quero personalizar uma camiseta.">Personalizar minha camiseta</a>
+            <a class="botao botao-contorno" href="#catalogo">Ver catálogo</a>
+          </div>
+        </div>
+        <div class="hero-arte" id="hero-arte"><!-- camiseta desenhada pelo js/main.js --></div>
+      </div>
+    </section>
+
+    <!-- ============ DIFERENCIAIS ============ -->
+    <!-- Textos provisórios: confirmar com o dono da loja -->
+    <div class="container diferenciais">
+      <div class="diferencial"><strong>Prévia da arte</strong><span>Você aprova o modelo virtual antes de produzirmos.</span></div>
+      <div class="diferencial"><strong>Atendimento direto</strong><span>Conversa pelo WhatsApp, sem formulário nem cadastro.</span></div>
+      <div class="diferencial"><strong>Três jeitos de escolher</strong><span>Lisa, estampada pronta ou feita sob encomenda.</span></div>
+      <div class="diferencial"><strong>Para todos os usos</strong><span>Grupos, eventos, empresas, turmas e presentes.</span></div>
+    </div>
+
+    <!-- ============ CATÁLOGO ============ -->
+    <section id="catalogo" class="secao">
+      <div class="container">
+        <h2>Veja o catálogo</h2>
+        <p class="subtitulo">Escolha um modelo e peça o orçamento direto pelo WhatsApp.</p>
+        <div class="filtros" id="filtros" role="group" aria-label="Filtrar por tipo"><!-- botões criados pelo js --></div>
+        <div class="grade-produtos" id="grade-produtos"><!-- cards criados pelo js --></div>
+      </div>
+    </section>
+
+    <!-- ============ COMO FUNCIONA ============ -->
+    <section class="secao">
+      <div class="container">
+        <h2>Como funciona a personalização?</h2>
+        <ol class="passos">
+          <li><strong>Chame no WhatsApp</strong><span>Clique em qualquer botão do site.</span></li>
+          <li><strong>Explique sua ideia</strong><span>Conte o que você quer na camiseta.</span></li>
+          <li><strong>Aprove a prévia</strong><span>Veja o modelo virtual e o orçamento.</span></li>
+          <li><strong>Receba sua camiseta</strong><span>Confirmamos o pedido e produzimos.</span></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ FAIXA FINAL ============ -->
+    <section class="faixa-final">
+      <h2>Ficou com alguma dúvida?</h2>
+      <p>Fale agora com a Expressão Artes.</p>
+      <a class="botao wa" href="#" data-msg="Olá! Tenho uma dúvida sobre as camisetas.">Falar agora</a>
+    </section>
+  </main>
+
+  <footer class="rodape">© 2026 Expressão Artes. Todos os direitos reservados.</footer>
+
+  <!-- Botão flutuante do WhatsApp -->
+  <a class="flutuante wa" href="#" data-msg="Olá! Vim pelo site da Expressão Artes." aria-label="Falar no WhatsApp">
+    <svg class="icone icone-grande"><use href="#icone-whatsapp"/></svg>
+  </a>
+
+  <!-- Ordem importa: config e produtos primeiro, main por último -->
+  <script src="js/config.js"></script>
+  <script src="js/produtos.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

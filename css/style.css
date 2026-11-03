@@ -1,0 +1,247 @@
+/* ==========================================================
+  EXPRESSÃO ARTES — estilos
+  Índice: 1 Variáveis · 2 Base · 3 Botões · 4 Cabeçalho · 5 Hero
+          6 Diferenciais · 7 Catálogo · 8 Passos · 9 Faixa final
+          10 Rodapé e botão flutuante · 11 Responsivo
+   ========================================================== */
+
+/* 1. VARIÁVEIS — para mudar as cores do site, mexa só aqui */
+:root {
+  --fundo: #ffffff;
+  --fundo-suave: #f3f6fc;      /* áreas azul bem clarinho */
+  --texto: #13213f;
+  --texto-suave: #55627c;
+  --borda: #d9e2f3;
+  --azul: #1f4fb5;             /* cor principal */
+  --azul-escuro: #163a8a;      /* hover dos botões */
+  --verde-whatsapp: #1faa59;
+  --raio: 14px;                /* arredondamento dos cards */
+  --largura-max: 1080px;
+}
+
+/* 2. BASE */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;    /* evita o cabeçalho cobrir o título ao clicar em âncoras */
+}
+
+body {
+  margin: 0;
+  background: var(--fundo);
+  color: var(--texto);
+  font: 400 16px/1.6 Poppins, system-ui, sans-serif;
+}
+
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--azul); outline-offset: 3px; }
+
+.container {
+  max-width: var(--largura-max);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.secao { padding: 48px 0; }
+h2 { font-size: clamp(22px, 3vw, 30px); margin: 0 0 8px; }
+.subtitulo { color: var(--texto-suave); margin: 0 0 24px; }
+
+/* 3. BOTÕES */
+.botao {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--azul);
+  color: #fff;
+  font: 600 15px Poppins, sans-serif;
+  text-decoration: none;
+  cursor: pointer;
+}
+.botao:hover { background: var(--azul-escuro); }
+
+.botao-pequeno { padding: 9px 18px; font-size: 14px; }
+
+.botao-contorno {
+  background: transparent;
+  color: var(--azul);
+  box-shadow: inset 0 0 0 2px var(--azul);
+}
+.botao-contorno:hover { background: var(--fundo-suave); }
+
+.icone { width: 18px; height: 18px; fill: currentColor; }
+.icone-grande { width: 30px; height: 30px; }
+
+/* 4. CABEÇALHO */
+.cabecalho {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--fundo);
+  border-bottom: 1px solid var(--borda);
+}
+.cabecalho .container {
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+}
+.logo img { display: block; height: 50px; width: auto; }   /* tamanho da logo */
+
+/* 5. HERO */
+.hero { background: var(--fundo); }
+.hero-grade {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 32px;
+  align-items: center;
+  padding-top: 56px;
+  padding-bottom: 56px;
+}
+.hero h1 {
+  font-size: clamp(28px, 4.4vw, 44px);
+  line-height: 1.15;
+  margin: 0 0 16px;
+}
+.hero p { color: var(--texto-suave); margin: 0 0 28px; max-width: 46ch; }
+.hero-botoes { display: flex; flex-wrap: wrap; gap: 12px; }
+.hero-arte {
+  width: 100%;
+  max-width: 340px;
+  aspect-ratio: 1;
+  justify-self: center;
+  overflow: hidden;
+  padding: 12%;
+  border-radius: 50%;
+  /* background: var(--fundo-suave); */
+}
+.hero-arte img {
+  width: 120%;
+  height: 120%;
+  object-fit: cover;           /* a foto cobre tudo sem esticar */
+}
+
+/* 6. DIFERENCIAIS */
+.diferenciais {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+.diferencial {
+  padding: 18px;
+  border: 1px solid var(--borda);
+  border-radius: var(--raio);
+}
+.diferencial strong { display: block; margin-bottom: 4px; color: var(--azul); }
+.diferencial span { display: block; font-size: 14px; line-height: 1.5; color: var(--texto-suave); }
+
+/* 7. CATÁLOGO */
+.filtros { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+.filtro {
+  padding: 8px 18px;
+  border: 1.5px solid var(--borda);
+  border-radius: 999px;
+  background: var(--fundo);
+  color: var(--texto);
+  font: 500 14px Poppins, sans-serif;
+  cursor: pointer;
+}
+.filtro[aria-pressed="true"] { background: var(--azul); border-color: var(--azul); color: #fff; }
+
+.grade-produtos {
+  display: grid;
+  max-height: 180vh;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 18px;
+  overflow: hidden;  /* evita que o card "vaze" do grid */
+  overflow-y: auto;
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--borda);
+  border-radius: var(--raio);
+}
+.card-imagem {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1;
+  padding: 14%;
+  background: var(--fundo-suave);
+}
+.card-imagem svg { width: 100%; height: 100%; }
+.card-imagem img { width: 100%; height: 100%; object-fit: cover; }
+.card-foto { padding: 0; }          /* foto real ocupa o quadrado inteiro */
+.card-info { display: flex; flex-direction: column; gap: 4px; flex: 1; padding: 14px 16px 16px; }
+.card-info h3 { margin: 0; font-size: 16px; }
+.card-tipo { color: var(--azul); font-size: 13px; font-weight: 500; }
+.card-preco { margin-bottom: 10px; color: var(--texto-suave); font-size: 14px; }
+.card-info .botao { margin-top: auto; justify-content: center; }
+
+/* 8. COMO FUNCIONA */
+.passos {
+  counter-reset: passo;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin: 24px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.passos li { counter-increment: passo; padding: 20px; border-radius: var(--raio); background: var(--fundo-suave); }
+.passos li::before {           /* numerinho redondo */
+  content: counter(passo);
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  margin-bottom: 12px;
+  border-radius: 50%;
+  background: var(--azul);
+  color: #fff;
+  font-weight: 700;
+}
+.passos strong { display: block; }
+.passos span { display: block; font-size: 14px; line-height: 1.5; color: var(--texto-suave); }
+
+/* 9. FAIXA FINAL */
+.faixa-final { padding: 48px 20px; background: var(--azul); color: #fff; text-align: center; }
+.faixa-final h2 { margin-bottom: 8px; }
+.faixa-final p { margin: 0 0 22px; opacity: 0.9; }
+.faixa-final .botao { background: #fff; color: var(--azul-escuro); }
+
+/* 10. RODAPÉ E BOTÃO FLUTUANTE */
+.rodape { padding: 22px 0; color: var(--texto-suave); font-size: 14px; text-align: center; }
+.flutuante {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 10;
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--verde-whatsapp);
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+}
+
+/* 11. RESPONSIVO */
+@media (max-width: 820px) {
+  .hero-grade { grid-template-columns: 1fr; padding-top: 36px; padding-bottom: 36px; }
+  .hero-arte { max-width: 240px; order: -1; }    /* camiseta vai para cima do texto */
+  .diferenciais, .passos { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 480px) {
+  .diferenciais, .passos { grid-template-columns: 1fr; }
+  .cabecalho .texto-botao { display: none; }     /* no celular, só o ícone */
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
