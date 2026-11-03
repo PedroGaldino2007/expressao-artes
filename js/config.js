@@ -4,7 +4,7 @@
 
 const CONFIG = {
   // Número do WhatsApp: 55 + DDD + número, só dígitos. Ex.: "5561999998888"
-  whatsapp: "5500000000000",
+  whatsapp: "5561994658588",
 
   // Início da mensagem enviada quando o cliente clica em "Pedir orçamento"
   mensagemOrcamento: "Olá! Vi o site da Expressão Artes e quero um orçamento: ",
