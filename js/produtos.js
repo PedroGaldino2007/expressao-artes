@@ -15,6 +15,7 @@ const PRODUTOS = [
   { nome: "Baby look algodão",        tipo: "lisa",   cor: "#8fb0ec", foto: "assets/produtos/teste1.jpg" },
   { nome: "Oversized algodão",        tipo: "lisa",   cor: "#13213f", foto: "assets/produtos/teste1.jpg" },
   { nome: "Regata unissex",           tipo: "lisa",   cor: "#dfe7f6", foto: "assets/produtos/teste1.jpg" },
+  { nome: "Regata unissex",           tipo: "lisa",   cor: "#dfe7f6", foto: "assets/produtos/teste1.jpg" },
 
   // --- Com estampa (prontas) ---  
   { nome: "Camiseta unissex estampada", tipo: "pronta", cor: "#1f4fb5", foto: "assets/produtos/teste2.jpg" },
