@@ -185,6 +185,30 @@ h2 { font-size: clamp(22px, 3vw, 30px); margin: 0 0 8px; }
 .card-preco { margin-bottom: 10px; color: var(--texto-suave); font-size: 14px; }
 .card-info .botao { margin-top: auto; justify-content: center; }
 
+/* Paginação do catálogo */
+.paginacao {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 28px;
+}
+
+.pagina {
+  min-width: 40px;
+  height: 40px;
+  padding: 0 14px;
+  border: 1.5px solid var(--borda);
+  border-radius: 999px;
+  background: var(--fundo);
+  color: var(--texto);
+  font: 500 14px Poppins, sans-serif;
+  cursor: pointer;
+}
+.pagina:hover:not(:disabled) { border-color: var(--azul); color: var(--azul); }
+.pagina[aria-current="page"] { background: var(--azul); border-color: var(--azul); color: #fff; }
+.pagina:disabled { opacity: 0.4; cursor: default; }
+
 /* 8. COMO FUNCIONA */
 .passos {
   counter-reset: passo;

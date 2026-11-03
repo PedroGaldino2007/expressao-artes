@@ -1,7 +1,7 @@
 // ==========================================================
 // LÓGICA DO SITE
 // Depende de CONFIG e TIPOS (config.js) e PRODUTOS (produtos.js).
-// Ordem do arquivo: WhatsApp → camiseta → cards → filtros → início
+// Ordem do arquivo: WhatsApp → camiseta → cards → catálogo/paginação → filtros → início
 // ==========================================================
 
 // ---------- WhatsApp ----------
@@ -72,16 +72,61 @@ function criarCard(produto) {
   );
 }
 
-// Redesenha a grade mostrando só os produtos do tipo escolhido.
-function mostrarProdutos(filtro) {
-  var html = "";
-  PRODUTOS.forEach(function (produto) {
-    if (filtro === "todos" || produto.tipo === filtro) {
-      html += criarCard(produto);
-    }
+// ---------- Catálogo com paginação ----------
+
+// Guarda o que o cliente está vendo agora: qual filtro e qual página.
+var estado = { filtro: "todos", pagina: 1 };
+
+// Desenha a página atual do catálogo, respeitando o filtro escolhido.
+function mostrarProdutos() {
+  // 1. Separa os produtos do filtro atual
+  var lista = PRODUTOS.filter(function (produto) {
+    return estado.filtro === "todos" || produto.tipo === estado.filtro;
   });
-  document.getElementById("grade-produtos").innerHTML = html;
+
+  // 2. Calcula quantas páginas existem (no mínimo 1)
+  var porPagina = CONFIG.produtosPorPagina;
+  var totalPaginas = Math.max(1, Math.ceil(lista.length / porPagina));
+  if (estado.pagina > totalPaginas) estado.pagina = totalPaginas;
+
+  // 3. Recorta só os produtos da página atual
+  var inicio = (estado.pagina - 1) * porPagina;
+  var daPagina = lista.slice(inicio, inicio + porPagina);
+
+  // 4. Desenha os cards e os botões de página
+  document.getElementById("grade-produtos").innerHTML = daPagina.map(criarCard).join("");
+  criarPaginacao(totalPaginas);
   ativarLinksWhatsapp();
+}
+
+// Cria os botões "Anterior · 1 2 3 · Próxima". Some se só houver 1 página.
+function criarPaginacao(totalPaginas) {
+  var area = document.getElementById("paginacao");
+  area.innerHTML = "";
+  if (totalPaginas <= 1) return;
+
+  function botao(texto, pagina, desativado, atual) {
+    var b = document.createElement("button");
+    b.className = "pagina";
+    b.textContent = texto;
+    b.disabled = desativado;
+    if (atual) b.setAttribute("aria-current", "page");
+    b.onclick = function () { irParaPagina(pagina); };
+    area.appendChild(b);
+  }
+
+  botao("‹ Anterior", estado.pagina - 1, estado.pagina === 1, false);
+  for (var n = 1; n <= totalPaginas; n++) {
+    botao(n, n, false, n === estado.pagina);
+  }
+  botao("Próxima ›", estado.pagina + 1, estado.pagina === totalPaginas, false);
+}
+
+// Troca de página e leva a tela de volta para o topo do catálogo.
+function irParaPagina(pagina) {
+  estado.pagina = pagina;
+  mostrarProdutos();
+  document.getElementById("catalogo").scrollIntoView();
 }
 
 // ---------- Botões de filtro ----------
@@ -100,7 +145,9 @@ function criarFiltros() {
         b.setAttribute("aria-pressed", "false");
       });
       botao.setAttribute("aria-pressed", "true");
-      mostrarProdutos(chave);
+      estado.filtro = chave;     // guarda o filtro escolhido
+      estado.pagina = 1;         // ao trocar de filtro, volta para a página 1
+      mostrarProdutos();
     };
 
     area.appendChild(botao);
@@ -112,7 +159,7 @@ function criarFiltros() {
 function iniciar() {
   document.getElementById("hero-arte").innerHTML = '<img src="assets/hero.jpg" alt="Camisetas Expressão Artes">';
   criarFiltros();
-  mostrarProdutos("todos");
+  mostrarProdutos();
   ativarLinksWhatsapp();
 }
 
